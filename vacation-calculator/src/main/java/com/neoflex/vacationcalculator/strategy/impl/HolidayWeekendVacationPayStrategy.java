@@ -6,17 +6,17 @@ import com.neoflex.vacationcalculator.strategy.VacationPayStrategy;
 import de.jollyday.Holiday;
 import de.jollyday.HolidayManager;
 import de.jollyday.ManagerParameters;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-public class HolidayVacationPayStrategy implements VacationPayStrategy {
+@Component("holidayWeekendVacationPayStrategy")
+public class HolidayWeekendVacationPayStrategy implements VacationPayStrategy {
 
     /**
      * Calculates the vacation pay amount considering holidays and weekends.
@@ -52,11 +52,11 @@ public class HolidayVacationPayStrategy implements VacationPayStrategy {
     }
 
     private long getAmountWeekend(LocalDate startDay, LocalDate endDay) {
-
+        HolidayManager holidayManager = HolidayManager.getInstance(ManagerParameters.create("RU"));
         long weekends = 0;
         LocalDate date = startDay;
         while (!date.isAfter(endDay)) {
-            if (isWeekend(date)) {
+            if (isWeekend(date) && !holidayManager.isHoliday(date)) {
                 weekends++;
             }
             date = date.plusDays(1);

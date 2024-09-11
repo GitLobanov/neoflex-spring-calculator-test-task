@@ -20,8 +20,11 @@ import java.time.LocalDate;
 @RequestMapping("/calculate")
 public class VacationPayController {
 
-    @Autowired
-    private VacationPayService vacationPayService;
+    private final VacationPayService vacationPayService;
+
+    public VacationPayController(VacationPayService vacationPayService) {
+        this.vacationPayService = vacationPayService;
+    }
 
     @GetMapping
     public ResponseEntity<VacationPayResponseDto> calculate (

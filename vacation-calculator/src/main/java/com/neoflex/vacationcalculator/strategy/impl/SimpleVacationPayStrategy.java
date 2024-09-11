@@ -3,11 +3,16 @@ package com.neoflex.vacationcalculator.strategy.impl;
 import com.neoflex.vacationcalculator.dto.VacationPayRequestDto;
 import com.neoflex.vacationcalculator.dto.VacationPayResponseDto;
 import com.neoflex.vacationcalculator.strategy.VacationPayStrategy;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@Component("simpleVacationPayStrategy")
 public class SimpleVacationPayStrategy implements VacationPayStrategy {
+
+    public SimpleVacationPayStrategy() {
+    }
 
     /**
      * Calculates the vacation pay amount based on the average salary and number of vacation days.
