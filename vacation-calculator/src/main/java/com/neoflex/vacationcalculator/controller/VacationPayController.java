@@ -36,6 +36,7 @@ public class VacationPayController {
 
         ValidationUtils.validateAverageSalary(averageSalary);
         ValidationUtils.validateDates(startDay, endDay);
+        ValidationUtils.validateDatesAndVacationDays(vacationDays, startDay, endDay);
 
         VacationPayRequestDto requestDto = VacationPayRequestDto.builder()
                 .averageSalary(averageSalary)
