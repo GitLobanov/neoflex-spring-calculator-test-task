@@ -89,6 +89,6 @@ The application will start and listen on port `8080` by default.
 
 ## Test Cases
 
-Tests for validattion.
-Tests for VacationPayController.
-Tests for strategies of calcaulation.
+- Tests for validattion.
+- Tests for VacationPayController.
+- Tests for strategies of calcaulation.
